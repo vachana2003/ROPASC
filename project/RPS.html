@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            background-color: lavender;
+            background: radial-gradient(circle, #2c3e50, #34495e);
+            overflow: hidden;
+        }
+        h1{
+            margin-top:20px;
+            color:black
+        }
+        .game-cantainer{
+            
+            justify-content: space-evenly;
+            margin:70px auto;
+            max-width:800px;
+            height:300px;
+            padding:20px;
+            border-radius: 10%;
+            background-image: linear-gradient(White,pink);
+            box-shadow: 0 4px 8px rgb(131, 131, 226);
+
+        }
+
+        .choice button{
+            background-image: linear-gradient(blue,White);
+            margin:10px;
+            padding:10px 20px;
+            cursor: pointer;
+            border:2px solid black;
+            border-radius:10px;
+            background-color: aquamarine;
+
+        }
+        .choice button:hover {
+            background-color:black;
+        }
+        .result{
+            margin-top:40px;
+            font-size:20px;
+            font-weight:bold;
+            color: black;
+        }
+          .floating-icon {
+            animation: float 5s infinite ease-in-out;
+          }
+          @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+          }
+          
+    </style>
+</head>
+<body>
+    <h1>ROCK PAPPER SCISSOR GAME</h1>
+    <div class="game-cantainer">
+    <div class="choice">
+      
+        <button onclick="playgame('rock')"><img src="rock.webp" height="100px" width="100px">Rock</button>
+        <button onclick="playgame('paper')"><img src="paper" height="100px" width="100px" >Paper</button>/ 
+        <button onclick="playgame('scissor')"><img src="scissor.webp" height="100px" width="100px">Scissor</button>
+    </div>
+
+    <div class="result" id="result">Make Your Movee!</div>
+</div>
+<div class=".floating-icon"></div>
+<script>
+    function playgame(playchoice){
+        const choice=['rock' ,'paper','scissor'];
+        console.log(choice);
+        console.log(playchoice)
+
+        const compchoice=choice[Math.floor(Math.random()*choice.length)];
+        console.log(compchoice)
+
+        let resultMessage=`you choice ${playchoice}, computer choice ${compchoice}.`;
+        console.log(resultMessage);
+
+
+
+        if(playchoice===compchoice){
+            resultMessage+="It's a tie!";
+
+        }
+        else if(
+            (playchoice==='rock' && compchoice==='scissor')||
+            (playchoice==='paper' && compchoice==='rock')||
+            (playchoice==='scissor'&& compchoice==='paper')
+
+        ){
+            resultMessage+="you win!";
+        }
+        else{
+            resultMessage+="you Lose!.."
+        }
+      document.getElementById('result').textContent=resultMessage;
+        console.log()
+        
+
+    }
+</script>
+    
+    
+</body>
+</html>
